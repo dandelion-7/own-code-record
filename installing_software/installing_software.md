@@ -349,3 +349,11 @@ conda env config vars set GTDBTK_DATA_PATH=~/software/gtdbtk/gtdbtk_db
         3. Set the GTDBTK_DATA_PATH environment variable by running:
             conda env config vars set GTDBTK_DATA_PATH="/path/to/target/db"
 ***
+
+## geNomad
+geNomad is primarily for identifying virus and plasmids in sequence data (isolates, metagenomes, and metatranscriptomes). It also provides additional features for taoxonomic assignment of viral genomes, identification of viruses integrated in host genomes (proviruses), and functional annotations of proteins.
+```bash
+conda create -n genomad -c conda-forge -c bioconda genomad
+mkdir ~/software/genomad/; cd ~/software/genomad/
+genomad download-database .
+```
