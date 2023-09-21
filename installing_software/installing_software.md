@@ -321,5 +321,30 @@ conda create -n cctyper -c conda-forge -c bioconda -c russel88 cctyper
 conda create -n gtdbtk
 source activate gtdbtk
 conda install -c bioconda gtdbtk
-download-db.sh # automatically download database of gtdbtk and archive it to /home/zhanggaopu/.conda/envs/gtdbtk/share/gtdbtk-2.1.0/db/gtdbtk_r207_v2_data.tar.gz.
+# manually dowload the gtdbtk database to my PC and upload to the server ~/software/gtdbtk
+cd ~/software/gtdbtk
+mkdir gtdbtk_db
+tar -zxvf gtdbtk_r207_v2_data.tar.gz -c ~/software/gtdbtk/gtdbtk_db --strip-components=1 > /dev/null
+conda env config vars set GTDBTK_DATA_PATH=~/software/gtdbtk/gtdbtk_db
 ```
+Executing transaction:
+    GTDB-Tk v2.1.0 requires ~63G of external data which needs to be downloaded
+    and extracted. This can be done automatically, or manually.
+
+    Automatic:
+
+        1. Run the command "download-db.sh" to automatically download and extract to:
+            /home/zhanggaopu/.conda/envs/gtdbtk/share/gtdbtk-2.1.0/db/
+
+    Manual:
+
+        1. Manually download the latest reference data:
+            wget https://data.gtdb.ecogenomic.org/releases/release207/207.0/auxillary_files/gtdbtk_r207_v2_data.tar.gz
+
+        2. Extract the archive to a target directory:
+            tar -xvzf gtdbtk_r207_v2_data.tar.gz -c "/path/to/target/db" --strip 1 > /dev/null
+            rm gtdbtk_r207_v2_data.tar.gz
+
+        3. Set the GTDBTK_DATA_PATH environment variable by running:
+            conda env config vars set GTDBTK_DATA_PATH="/path/to/target/db"
+***
