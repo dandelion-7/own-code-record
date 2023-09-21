@@ -317,6 +317,7 @@ conda create -n cctyper -c conda-forge -c bioconda -c russel88 cctyper
 
 ***
 ## GTDB-tk
+GTDB-tk is for annotating the taxonomy of bacterial/archaeal genomes.
 ```bash
 conda create -n gtdbtk
 source activate gtdbtk
@@ -327,7 +328,7 @@ mkdir gtdbtk_db
 tar -zxvf gtdbtk_r207_v2_data.tar.gz -c ~/software/gtdbtk/gtdbtk_db --strip-components=1 > /dev/null
 conda env config vars set GTDBTK_DATA_PATH=~/software/gtdbtk/gtdbtk_db
 ```
-Executing transaction:
+    Executing transaction:
     GTDB-Tk v2.1.0 requires ~63G of external data which needs to be downloaded
     and extracted. This can be done automatically, or manually.
 
