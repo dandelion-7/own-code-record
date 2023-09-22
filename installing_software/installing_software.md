@@ -357,3 +357,15 @@ conda create -n genomad -c conda-forge -c bioconda genomad
 mkdir ~/software/genomad/; cd ~/software/genomad/
 genomad download-database .
 ```
+Ref:https://github.com/apcamargo/genomad
+***
+
+## vContact2
+vConTACT2 is a tool to perform guilt-by-contig-association classification of viral genomic sequence data. It's designed to cluster and provide taxonomic context of viral metagenomic sequencing data.
+```bash
+conda create -n vcontact2
+source activate 
+conda install -y -c bioconda vcontact2 mcl blast diamond
+conda install -c bioconda clusterone
+vcontact2 --raw-proteins VIRSorter_genome.faa --proteins-fp VIRSorter_genome_g2g.csv --db 'ProkaryoticViralRefSeq211-Merged' --output-dir ../test_out/ # example running
+```
