@@ -367,5 +367,29 @@ conda create -n vcontact2
 source activate 
 conda install -y -c bioconda vcontact2 mcl blast diamond
 conda install -c bioconda clusterone
-vcontact2 --raw-proteins VIRSorter_genome.faa --proteins-fp VIRSorter_genome_g2g.csv --db 'ProkaryoticViralRefSeq211-Merged' --output-dir ../test_out/ # example running
+conda install "numpy<1.24"
+
+vcontact2 --raw-proteins VIRSorter_genome.faa --proteins-fp VIRSorter_genome_g2g.csv --db 'ProkaryoticViralRefSeq211-Merged' --output-dir ../test_out/ --vcs-mode ClusterONE # example running, failed.
 ```
+vContact2 is not being maintained anymore. Failed to run test samples.
+***
+
+## CRISPRclassify
+```R
+library(devtools)
+library(stringr)
+library(tidyverse)
+library(DT)
+library(xgboost)
+library(memoise)
+#install.packages('stringdist')
+library(stringdist)
+#install_github("CRISPRlab/CRISPRclassify")
+CRISPRclassify::launchApp()
+getwd()
+CRISPRclassify::classifyRepeats('~/crisprome/human_temporal_metagenome_wangjun_2022natComm/intermediates/7.crisprtools_extract/CRISPRclassify_test/3_3_TD24_repeats.txt')
+CRISPRclassify::classifyFasta('~/crisprome/artifical_microbiome/genomes/RG_Ruminococcus_gnavus_ATCC_29149.fasta')
+```
+CRISPRclassify doesn't work on Rstudio or command line.
+***
+
