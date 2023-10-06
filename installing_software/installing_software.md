@@ -92,6 +92,19 @@ lanlab
 # when use humann, use the --metaphlan-options to denote the position and the version of the database. 
 > cd ~/software/humann/humann_test
 > humann --input ../humann-3.6.1/examples/demo.fastq --output ../humann_test/demo_test.out/ --metaphlan-options "--bowtie2db /home/zhanggaopu/software/metaphlan/bowtie2db_for_humann --index mpa_vJan21_CHOCOPhlAnSGB_202103"
+
+cd ~/software/humann/humann_database
+mkdir chocophlan
+mkdir uniref90
+humann_databases --download chocophlan full chocophlan
+humann_databases --download uniref uniref90_diamond uniref90
+
+#------------------------------------------------------------------------------------------------
+# The above methods requires performing installation in a new container. So the mpa virture environment of mpa is cloned, and humann is installed in the mpa env.
+conda create -n humann --clone mpa
+source activate mpa
+cd ~/software/humann/humann-3.6.1
+python setup.py install
 ```
 
 ***
@@ -393,3 +406,15 @@ CRISPRclassify::classifyFasta('~/crisprome/artifical_microbiome/genomes/RG_Rumin
 CRISPRclassify doesn't work on Rstudio or command line.
 ***
 
+## PILER-CR
+```bash
+source activate crispr-softwares
+conda install -c bioconda piler-cr
+```
+***
+
+## seqkit
+```bash
+source activate crispr-softwares/seqkit
+conda install -c bioconda seqkit
+```
