@@ -418,3 +418,42 @@ conda install -c bioconda piler-cr
 source activate crispr-softwares/seqkit
 conda install -c bioconda seqkit
 ```
+***
+
+## defense-finder
+```bash
+conda create -n defensefinder --clone mpa
+source activate defensefinder
+pip install mdmparis-defense-finder
+conda install -c bioconda hmmer
+conda install -c bioconda prodigal
+conda install -c bioconda seqkit
+```
+***
+
+## DAS Tool
+```bash
+conda create -n das_tool R
+source activate das_tool
+
+conda install -c conda-forge r-docopt
+conda install -c conda-forge r-magrittr
+conda install -c conda-forge r-data.table
+conda install -c bioconda metabat2
+conda install -c bioconda -c conda-forge maxbin2
+conda install -c bioconda -c conda-forge concoct # concoct can't be installed with conda.
+conda install -c anaconda cython
+conda install -c bioconda numpy
+```
+
+## DIAMOND
+```bash
+cd ~/software/diamond
+wget http://github.com/bbuchfink/diamond/releases/download/v2.1.8/diamond-linux64.tar.gz
+tar xzf diamond-linux64.tar.gz
+
+# create diamond database with UHGP.
+~/software/diamond/diamond makedb --in ~/genome/UHGP/uhgp.faa --db ~/genome/UHGP/total_uhgp_diamond_db/uhgp --threads 64
+# test diamond blastx/blastp.
+~/software/diamond/diamond blastp -d ~/genome/UHGP/total_uhgp_diamond_db/uhgp.dmnd -o matches.tsv -q 2_long_contigs.part_277_proteins.fasta
+```
