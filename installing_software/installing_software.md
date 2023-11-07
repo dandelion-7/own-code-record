@@ -444,6 +444,12 @@ conda install -c bioconda -c conda-forge maxbin2
 conda install -c bioconda -c conda-forge concoct # concoct can't be installed with conda.
 conda install -c anaconda cython
 conda install -c bioconda numpy
+
+### CONCOCT is installed independently in another conda virtue env.
+conda create -n concoct
+source activate concoct
+conda install -c bioconda -c conda-forge concoct
+concoct -h
 ```
 
 ## DIAMOND
@@ -456,4 +462,29 @@ tar xzf diamond-linux64.tar.gz
 ~/software/diamond/diamond makedb --in ~/genome/UHGP/uhgp.faa --db ~/genome/UHGP/total_uhgp_diamond_db/uhgp --threads 64
 # test diamond blastx/blastp.
 ~/software/diamond/diamond blastp -d ~/genome/UHGP/total_uhgp_diamond_db/uhgp.dmnd -o matches.tsv -q 2_long_contigs.part_277_proteins.fasta
+```
+
+## snakemake & prokka & binny
+```bash
+mamba create -c conda-forge -c bioconda -n snakemake snakemake
+mamba activate snakemake
+
+snakemake --help
+conda install -c conda-forge -c bioconda -c defaults prokka
+
+cd ~/software/binny
+git clone https://github.com/a-h-b/binny.git 
+```
+snakemake and prokka are installed in the env, but binny was only cloned but not configured.
+
+## maxbin2
+A new maxbin2 env is created with mamba.
+```bash
+mamba create -n maxbin2 -c bioconda -c conda-forge maxbin2
+mamba activate maxbin2
+```
+
+## Mummer
+```bash
+mamba create --name mummer mummer -c bioconda -c conda-forge
 ```
