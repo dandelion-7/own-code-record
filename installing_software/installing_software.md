@@ -280,8 +280,6 @@ lanlab
 > conda install -c bioconda -c conda-forge pysam
 > conda install -c bioconda hmmer
 > conda install -c bioconda pplacer
-> conda install -c bioconda prodigal
-
 > conda install -c bioconda biopython
 > conda install -c bioconda -c conda-forge biom-format
 > conda install -c bioconda -c conda-forge cmseq
@@ -444,6 +442,9 @@ conda install -c bioconda -c conda-forge maxbin2
 conda install -c bioconda -c conda-forge concoct # concoct can't be installed with conda.
 conda install -c anaconda cython
 conda install -c bioconda numpy
+mamba install -c bioconda -c conda-forge prodigal
+mamba install -c bioconda -c conda-forge diamond pullseq ruby
+
 
 ### CONCOCT is installed independently in another conda virtue env.
 conda create -n concoct
@@ -487,4 +488,18 @@ mamba activate maxbin2
 ## Mummer
 ```bash
 mamba create --name mummer mummer -c bioconda -c conda-forge
+```
+
+## Taxonkit
+```bash
+conda create -n taxonkit
+source activate taxonkit
+mamba install -c conda-forge -c bioconda taxonkit
+
+# prepare the database for taxonkit.
+cd /home/zhanggaopu/software/taxonkit
+wget -c https://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz 
+tar -zxvf taxdump.tar.gz
+mkdir -p $HOME/.taxonkit
+cp names.dmp nodes.dmp delnodes.dmp merged.dmp $HOME/.taxonkit
 ```
