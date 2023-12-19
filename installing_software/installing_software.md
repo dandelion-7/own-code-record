@@ -502,4 +502,14 @@ wget -c https://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz
 tar -zxvf taxdump.tar.gz
 mkdir -p $HOME/.taxonkit
 cp names.dmp nodes.dmp delnodes.dmp merged.dmp $HOME/.taxonkit
+mamba install csvtk -c bioconda -c conda-forge
+```
+
+## flye & medaka (for ONT de novo genome assembly)
+```
+conda create -n flye python=3.9
+source activate flye
+
+mamba install -c bioconda -c conda-forge flye
+mamba isntall -c bioconda -c conda-forge medaka
 ```
